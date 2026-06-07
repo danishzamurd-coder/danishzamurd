@@ -12,27 +12,47 @@
 <body>
    
   <!-- Navigation -->
-  <nav aria-label="Main navigation">
-    <div class="logo">DANISH ZAMURD</div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+  <nav>
+
+    <div class="logo">
+
+        <img src="logo.jpeg" alt="Logo">
+
+        <span>DANISH ZAMURD</span>
+
+    </div>
+
+    <div class="menu-icon" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <ul id="menu">
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#about">About</a></li>
+
+        <li><a href="#services">Services</a></li>
+
+        <li><a href="#skills">Skills</a></li>
+
+        <li><a href="#projects">Projects</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+        
+
     </ul>
-  </nav>
+
+</nav>
 
   <!-- Hero / Home Section -->
 <header id="home">
 
-    <h1 class="main-title">Hi, I'm Danish Zamurd</h1>
-
     <div class="hero-container">
 
-        <div class="hero-image">
-            <img src="profile.jpeg" alt="Danish Zamurd">
-        </div>
+        <h1 class="main-title">
+            Hi, I'm Danish Zamurd
+        </h1>
 
         <div class="hero-text">
 
@@ -43,24 +63,74 @@
                 HTML, CSS and JavaScript.
             </p>
 
-            <a class="btn" href="#projects">View My Work</a>
-
+           
         </div>
 
+<div class="hero-buttons">
+
+  <a class="btn" href="#projects">
+                View My Work
+            </a>
+   
+
+    <a class="btn cv-btn"
+       href="cv.pdf"
+       download>
+       Download CV
+    </a>
+
+</div>
     </div>
 
 </header>
 <!-- Main Content -->
   <main>
     <!-- About Section -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I am Danish Zamurd, a Frontend Web Developer and BS student 
-dedicated to building modern, responsive, and visually appealing 
-websites. With a strong interest in web technologies and continuous 
-learning, I focus on creating user-friendly digital experiences that 
-combine functionality with clean design.</p>
-    </section>
+   <section id="about">
+
+    <h4 class="section-tag">ABOUT</h4>
+
+    <h2>Let Me Introduce Myself</h2>
+
+    <div class="about-content">
+
+        <img src="profile.jpeg" alt="Danish Zamurd">
+
+        <div class="about-text">
+
+            <h3>My name is Danish Zamurd</h3>
+
+            <p>
+                I am a BS Computer Science student and Frontend Web Developer
+                passionate about building modern and responsive websites.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="about-description">
+
+        <p>
+            I have practical experience in HTML, CSS and JavaScript and enjoy
+            creating clean, user-friendly and responsive websites.
+        </p>
+
+        <p>
+            Along with web development, I am continuously improving my
+            programming and problem-solving skills through my BS Computer
+            Science studies.
+        </p>
+
+        <p>
+            In the future, I plan to expand my expertise into Machine Learning,
+            Artificial Intelligence and advanced software development while
+            continuing to build professional web applications.
+        </p>
+
+    </div>
+
+</section>
 
     <!-- Skills Section -->
     <section id="skills">
@@ -138,19 +208,80 @@ combine functionality with clean design.</p>
 
       <!-- Add other skill categories similarly -->
     </section>
+    <section id="services">
+
+    <h2>Services</h2>
+
+    <div class="skills-container">
+
+        <div class="skill-card">
+            Frontend Website Development
+        </div>
+
+        <div class="skill-card">
+            Responsive Web Design
+        </div>
+
+        <div class="skill-card">
+            Landing Page Development
+        </div>
+
+        <div class="skill-card">
+            Website Redesign
+        </div>
+
+    </div>
+
+</section>
+<section id="certificates">
+
+    <h2>Certificates</h2>
+
+    <div class="card">
+        <h3>Frontend Development</h3>
+        <p>HTML, CSS & JavaScript</p>
+    </div>
+    <div class="card">
+        <h3>Computer Software Course</h3>
+        <p>Microsoft Office </p>
+        <p>Data Entry</p>
+        <p>Graphic Designing</p>
+        <p>Video Editing</p>
+        <p>Internet & Emails</p>
+    </div>
+
+</section>
 <!-- Projects Section -->
     <section id="projects">
       <h2>Projects</h2>
       <div class="projects">
        <a href="https://danishzamurd-coder.github.io/Moon-restaurant-web/" target="-blank" class="project-link">
         <div class="card">
-          <img src="hero.jpeg" alt="Moon Restaurant homepage">
+          <img src="Moon-preview.jpeg" alt="Moon Restaurant homepage">
           <h3>Moon Restaurant</h3>
           <p>Website of 5 star  Moon Restaurant Located in Naran Valley.</p>
           
     
       </div>
       </a> 
+      <a href="https://danishzamurd-coder.github.io/fitzone-Gym/"
+   target="_blank"
+   class="project-link">
+
+    <div class="card">
+
+        <img src="fitzone-preview.jpeg" alt="FitZone Gym">
+
+        <h3>FitZone Gym</h3>
+
+        <p>
+            Modern fitness website with workout categories,
+            exercise guides and BMI calculator.
+        </p>
+
+    </div>
+
+</a>
       
     
     </section>
@@ -181,6 +312,14 @@ combine functionality with clean design.</p>
             <i class="fa-brands fa-instagram"></i>
             <span>Instagram</span>
         </a>
+        <a href="https://github.com/danishzamurd-coder"
+   target="_blank"
+   class="contact-item github">
+
+   <i class="fab fa-github"></i>
+   GitHub
+
+</a>
 
     </div>
 
@@ -191,5 +330,6 @@ combine functionality with clean design.</p>
   <footer>
     <p>© 2026 Danish Zamurd.Build your work from us.</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
