@@ -1,335 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Danish Zamurd, Frontend Web Developer">
+  <meta name="description" content="Portfolio of Danish Zamurd — Frontend Web Developer and freelancer specializing in responsive websites, data entry and graphic design.">
   <title>DANISH ZAMURD</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-   
+
   <!-- Navigation -->
-  <nav>
+  <nav id="navbar">
 
-    <div class="logo">
-
-        <img src="logo.jpeg" alt="Logo">
-
-        <span>DANISH ZAMURD</span>
-
-    </div>
-
-    <div class="menu-icon" onclick="toggleMenu()">
-        ☰
-    </div>
-
-    <ul id="menu">
-
-        <li><a href="#home">Home</a></li>
-
-        <li><a href="#about">About</a></li>
-
-        <li><a href="#services">Services</a></li>
-
-        <li><a href="#skills">Skills</a></li>
-
-        <li><a href="#projects">Projects</a></li>
-
-        <li><a href="#contact">Contact</a></li>
-        
-
-    </ul>
-
-</nav>
-
-  <!-- Hero / Home Section -->
-<header id="home">
-
-    <div class="hero-container">
-
-        <h1 class="main-title">
-            Hi, I'm Danish Zamurd
-        </h1>
-
-        <div class="hero-text">
-
-            <h2>Frontend Web Developer</h2>
-
-            <p>
-                I build modern, responsive websites using
-                HTML, CSS and JavaScript.
-            </p>
-
-           
-        </div>
-
-<div class="hero-buttons">
-
-  <a class="btn" href="#projects">
-                View My Work
-            </a>
-   
-
-    <a class="btn cv-btn"
-       href="cv.pdf"
-       download>
-       Download CV
+    <a href="#home" class="logo">
+      <img src="logo.jpeg" alt="Danish Zamurd logo">
+      <span>DANISH ZAMURD</span>
     </a>
 
-</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul id="menu">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#certificates" class="nav-link">Certificates</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- Hero / Home Section -->
+  <header id="home">
+    <div class="hero-container">
+
+      <p class="availability"><span class="dot"></span>Available</p>
+
+      <h1 class="main-title">Danish Zamurd</h1>
+
+      <h2 class="hero-role">I'm a <span class="typed" id="typed">Frontend Web Developer</span></h2>
+
+      <p class="hero-text">
+        I design and build clean, responsive websites with HTML, CSS and JavaScript —
+        and bring an extra edge from graphic design, data entry and office productivity tools.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#projects">View My Work</a>
+        <a class="btn btn-outline" href="cv.pdf" download>Download CV <i class="fa-solid fa-download"></i></a>
+      </div>
+
     </div>
 
-</header>
-<!-- Main Content -->
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </header>
+
+  <!-- Main Content -->
   <main>
+
     <!-- About Section -->
-   <section id="about">
+    <section id="about">
 
-    <h4 class="section-tag">ABOUT</h4>
+      <p class="eyebrow">// about</p>
+      <h2>Let Me Introduce Myself</h2>
 
-    <h2>Let Me Introduce Myself</h2>
+      <div class="about-content reveal">
 
-    <div class="about-content">
-
-        <img src="profile.jpeg" alt="Danish Zamurd">
+        <div class="about-img-wrap">
+          <img src="profile.jpeg" alt="Danish Zamurd">
+        </div>
 
         <div class="about-text">
 
-            <h3>My name is Danish Zamurd</h3>
+          <h3>My name is Danish Zamurd</h3>
 
-            <p>
-                I am a BS Computer Science student and Frontend Web Developer
-                passionate about building modern and responsive websites.
-            </p>
+          <p>
+            I'm a BS Computer Science student and frontend web developer who enjoys
+            turning ideas into clean, responsive websites that feel good to use.
+          </p>
+
+          <p>
+            I have hands-on experience with HTML, CSS and JavaScript, and I'm always
+            improving my programming and problem-solving skills through my studies.
+          </p>
+
+          <p>
+            Alongside web development, I'm building a freelance career on Fiverr and
+            Upwork — offering services from website development to data entry and
+            graphic design — while working toward expertise in Machine Learning and AI.
+          </p>
+
+          <div class="about-facts">
+            <div class="fact"><i class="fa-solid fa-graduation-cap"></i><span>BS Computer Science Student</span></div>
+            <div class="fact"><i class="fa-solid fa-laptop-code"></i><span>Frontend Web Developer</span></div>
+            <div class="fact"><i class="fa-solid fa-briefcase"></i><span>Freelancer on Fiverr &amp; Upwork</span></div>
+          </div>
 
         </div>
 
-    </div>
+      </div>
 
-    <div class="about-description">
-
-        <p>
-            I have practical experience in HTML, CSS and JavaScript and enjoy
-            creating clean, user-friendly and responsive websites.
-        </p>
-
-        <p>
-            Along with web development, I am continuously improving my
-            programming and problem-solving skills through my BS Computer
-            Science studies.
-        </p>
-
-        <p>
-            In the future, I plan to expand my expertise into Machine Learning,
-            Artificial Intelligence and advanced software development while
-            continuing to build professional web applications.
-        </p>
-
-    </div>
-
-</section>
+    </section>
 
     <!-- Skills Section -->
     <section id="skills">
+
+      <p class="eyebrow">// skills</p>
       <h2>My Skills</h2>
-      <div class="skills-category">
-        <h3>Web Development</h3>
-        <div class="skills-container">
-          <div class="skill-card">HTML5</div>
-          <div class="skill-card">CSS3</div>
-          <div class="skill-card">JavaScript</div>
-          <div class="skill-card">Git &amp; GitHub</div>
+
+      <div class="skills-grid-wrap">
+
+        <div class="skills-category reveal">
+          <div class="skills-category-header">
+            <i class="fa-solid fa-code"></i>
+            <h3>Web Development</h3>
+          </div>
+          <div class="skills-container">
+            <div class="skill-card">HTML5</div>
+            <div class="skill-card">CSS3</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">Responsive Design</div>
+            <div class="skill-card">Git &amp; GitHub</div>
+          </div>
         </div>
-      </div>
-      <div class="skills-category">
 
-        <h3>Programming</h3>
-
-        <div class="skills-container">
+        <div class="skills-category reveal">
+          <div class="skills-category-header">
+            <i class="fa-solid fa-database"></i>
+            <h3>Programming &amp; Databases</h3>
+          </div>
+          <div class="skills-container">
             <div class="skill-card">C++</div>
             <div class="skill-card">OOP with C++</div>
             <div class="skill-card">Python</div>
+            <div class="skill-card">SQL &amp; DBMS Basics</div>
+          </div>
         </div>
 
-    </div>
-
-    <div class="skills-category">
-
-        <h3>Database</h3>
-
-        <div class="skills-container">
-            <div class="skill-card">Database Design</div>
-            <div class="skill-card">SQL Basics</div>
-            <div class="skill-card">DBMS</div>
-        </div>
-
-    </div>
-
-    <div class="skills-category">
-
-        <h3>Design & Multimedia</h3>
-
-        <div class="skills-container">
+        <div class="skills-category reveal">
+          <div class="skills-category-header">
+            <i class="fa-solid fa-palette"></i>
+            <h3>Design &amp; Multimedia</h3>
+          </div>
+          <div class="skills-container">
             <div class="skill-card">Adobe Photoshop</div>
             <div class="skill-card">CorelDRAW</div>
+            <div class="skill-card">Logo Design</div>
             <div class="skill-card">Video Editing</div>
+          </div>
         </div>
 
-    </div>
-
-    <div class="skills-category">
-
-        <h3>Office Applications</h3>
-
-        <div class="skills-container">
+        <div class="skills-category reveal">
+          <div class="skills-category-header">
+            <i class="fa-solid fa-file-word"></i>
+            <h3>Office Applications</h3>
+          </div>
+          <div class="skills-container">
             <div class="skill-card">MS Word</div>
             <div class="skill-card">MS Excel</div>
             <div class="skill-card">MS PowerPoint</div>
             <div class="skill-card">InPage</div>
+          </div>
         </div>
 
-    </div>
-
-    <div class="skills-category">
-
-        <h3>Technical Skills</h3>
-
-        <div class="skills-container">
+        <div class="skills-category reveal">
+          <div class="skills-category-header">
+            <i class="fa-solid fa-keyboard"></i>
+            <h3>Data Entry &amp; Technical</h3>
+          </div>
+          <div class="skills-container">
+            <div class="skill-card">Data Entry</div>
             <div class="skill-card">AutoCAD 2D</div>
-            <div class="skill-card">Typing</div>
-            <div class="skill-card">Internet Applications</div>
+            <div class="skill-card">Fast &amp; Accurate Typing</div>
             <div class="skill-card">Digital Logic Design</div>
+          </div>
         </div>
 
-    </div>
+        <div class="skills-category reveal">
+          <div class="skills-category-header">
+            <i class="fa-solid fa-handshake"></i>
+            <h3>Freelance &amp; Soft Skills</h3>
+          </div>
+          <div class="skills-container">
+            <div class="skill-card">Client Communication</div>
+            <div class="skill-card">Retail &amp; Customer Service</div>
+            <div class="skill-card">Time Management</div>
+            <div class="skill-card">Problem Solving</div>
+          </div>
+        </div>
 
-      <!-- Add other skill categories similarly -->
+      </div>
+
     </section>
+
+    <!-- Services Section -->
     <section id="services">
 
-    <h2>Services</h2>
+      <p class="eyebrow">// services</p>
+      <h2>What I Can Do For You</h2>
 
-    <div class="skills-container">
+      <div class="services-grid">
 
-        <div class="skill-card">
-            Frontend Website Development
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3>Frontend Website Development</h3>
+          <p>Custom websites built from scratch with clean, well-structured HTML, CSS and JavaScript, tailored to your brand and goals.</p>
         </div>
 
-        <div class="skill-card">
-            Responsive Web Design
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3>Responsive Web Design</h3>
+          <p>Layouts that look and work great on every device, from large desktop screens down to small mobile phones.</p>
         </div>
 
-        <div class="skill-card">
-            Landing Page Development
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <h3>Landing Page Development</h3>
+          <p>Focused, conversion-ready landing pages built to introduce your product and turn visitors into customers.</p>
         </div>
 
-        <div class="skill-card">
-            Website Redesign
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <h3>Website Redesign</h3>
+          <p>Giving outdated websites a modern look and better performance, without losing the content that already works.</p>
         </div>
 
-    </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fa-solid fa-keyboard"></i></div>
+          <h3>Data Entry Services</h3>
+          <p>Fast, accurate data entry and formatting for spreadsheets, documents and online forms.</p>
+        </div>
 
-</section>
-<section id="certificates">
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>Logo &amp; Graphic Design</h3>
+          <p>Simple, memorable logos and graphics designed with Adobe Photoshop and CorelDRAW.</p>
+        </div>
 
-    <h2>Certificates</h2>
-
-    <div class="card">
-        <h3>Frontend Development</h3>
-        <p>HTML, CSS & JavaScript</p>
-    </div>
-    <div class="card">
-        <h3>Computer Software Course</h3>
-        <p>Microsoft Office </p>
-        <p>Data Entry</p>
-        <p>Graphic Designing</p>
-        <p>Video Editing</p>
-        <p>Internet & Emails</p>
-    </div>
-
-</section>
-<!-- Projects Section -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="projects">
-       <a href="https://danishzamurd-coder.github.io/Moon-restaurant-web/" target="-blank" class="project-link">
-        <div class="card">
-          <img src="Moon-preview.jpeg" alt="Moon Restaurant homepage">
-          <h3>Moon Restaurant</h3>
-          <p>Website of 5 star  Moon Restaurant Located in Naran Valley.</p>
-          
-    
       </div>
-      </a> 
-      <a href="https://danishzamurd-coder.github.io/fitzone-Gym/"
-   target="_blank"
-   class="project-link">
 
-    <div class="card">
+    </section>
 
-        <img src="fitzone-preview.jpeg" alt="FitZone Gym">
+    <!-- Certificates Section -->
+    <section id="certificates">
 
-        <h3>FitZone Gym</h3>
+      <p class="eyebrow">// certificates</p>
+      <h2>Certificates</h2>
 
-        <p>
-            Modern fitness website with workout categories,
-            exercise guides and BMI calculator.
-        </p>
+      <div class="cert-grid">
 
-    </div>
+        <div class="cert-card reveal">
+          <div class="cert-badge"><i class="fa-solid fa-certificate"></i></div>
+          <h3>Frontend Web Development</h3>
+          <p class="cert-meta">HTML, CSS &amp; JavaScript</p>
+          <p>Practical, project-based learning covering core front-end technologies, layout techniques and responsive design principles.</p>
+        </div>
 
-</a>
-      
-    
+        <div class="cert-card reveal">
+          <div class="cert-badge"><i class="fa-solid fa-award"></i></div>
+          <h3>Computer Software Certificate (A+)</h3>
+          <p class="cert-meta">Bright Future English Language &amp; Computer Tech Institute · Dec 2024 – Feb 2025</p>
+          <ul class="cert-list">
+            <li>MS Office (Word, Excel, PowerPoint)</li>
+            <li>Data Entry</li>
+            <li>Graphic Designing (Photoshop &amp; CorelDRAW)</li>
+            <li>Video Editing</li>
+            <li>AutoCAD 2D Basics</li>
+            <li>InPage &amp; Internet Applications</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+
+      <p class="eyebrow">// projects</p>
+      <h2>Projects</h2>
+
+      <div class="projects-grid">
+
+        <article class="project-card reveal">
+          <div class="project-img">
+            <img src="Moon-preview.jpeg" alt="Moon Restaurant homepage">
+          </div>
+          <div class="project-body">
+            <h3>Moon Restaurant</h3>
+            <p>A visually rich website for a 5-star restaurant located in the scenic Naran Valley, featuring an elegant layout and smooth navigation.</p>
+            <div class="project-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+            <a href="https://danishzamurd-coder.github.io/Moon-restaurant-web/" target="_blank" rel="noopener" class="project-link">
+              View Live <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-img">
+            <img src="fitzone-preview.jpeg" alt="FitZone Gym homepage">
+          </div>
+          <div class="project-body">
+            <h3>FitZone Gym</h3>
+            <p>A modern fitness website with categorized workout guides, exercise instructions and an interactive BMI calculator.</p>
+            <div class="project-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>BMI Calculator</span>
+            </div>
+            <a href="https://danishzamurd-coder.github.io/fitzone-Gym/" target="_blank" rel="noopener" class="project-link">
+              View Live <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
     </section>
 
     <!-- Contact Section -->
-    
-<section id="contact">
+    <section id="contact">
 
-    <h2>Contact Me</h2>
-    <p>Feel free to contact with me</p>
+      <p class="eyebrow">// contact</p>
+      <h2>Get In Touch</h2>
+      <p class="contact-intro">Feel free to reach out — I'm happy to help with your next project.</p>
 
-    <div class="contact-box">
+      <div class="contact-box reveal">
 
-        <!-- Email -->
-        <a href="mailto:danishzamurd@gmail.com" class="contact-item email">
-            <i class="fa-solid fa-envelope"></i>
-            <span>Email</span>
+        <a href="mailto:danishzamurd@gmail.com" class="contact-item">
+          <span class="contact-icon email"><i class="fa-solid fa-envelope"></i></span>
+          <span class="contact-label">Email</span>
         </a>
 
-        <!-- WhatsApp -->
-        <a href="https://wa.me/923190799512" target="_blank" class="contact-item whatsapp">
-            <i class="fa-brands fa-whatsapp"></i>
-            <span>WhatsApp</span>
+        <a href="https://wa.me/923190799512" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></span>
+          <span class="contact-label">WhatsApp</span>
         </a>
 
-        <!-- Instagram -->
-        <a href="https://instagram.com/danishzamurd" target="_blank" class="contact-item instagram">
-            <i class="fa-brands fa-instagram"></i>
-            <span>Instagram</span>
+        <a href="https://instagram.com/danishzamurd" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-icon instagram"><i class="fa-brands fa-instagram"></i></span>
+          <span class="contact-label">Instagram</span>
         </a>
-        <a href="https://github.com/danishzamurd-coder"
-   target="_blank"
-   class="contact-item github">
 
-   <i class="fab fa-github"></i>
-   GitHub
+        <a href="https://github.com/danishzamurd-coder" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-icon github"><i class="fa-brands fa-github"></i></span>
+          <span class="contact-label">GitHub</span>
+        </a>
 
-</a>
+      </div>
 
-    </div>
+    </section>
 
-</section>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>© 2026 Danish Zamurd.Build your work from us.</p>
+    <div class="footer-content">
+
+      <div class="footer-brand">Danish Zamurd</div>
+      <p class="footer-tagline">Build Your World With Us.</p>
+
+      <div class="footer-socials">
+        <a href="mailto:danishzamurd@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://wa.me/923190799512" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://instagram.com/danishzamurd" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/danishzamurd-coder" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      </div>
+
+      <p class="footer-copy">© 2026 Danish Zamurd. All rights reserved.</p>
+
+    </div>
   </footer>
+
+  <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+
   <script src="script.js"></script>
 </body>
+
 </html>
