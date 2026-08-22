@@ -79,10 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
      Typing animation for hero role
   ---------------------------------------- */
   const roles = [
-    'Frontend Web Developer',
-    'Freelancer',
-    'Problem Solver',
-    'BS CS Student'
+    'Welcome to my website',
+    'Please login or register',
+    "Let's build something great",
+    'Freelance web development, done right'
   ];
 
   if (typedEl && !prefersReducedMotion) {
@@ -116,6 +116,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     typeLoop();
   }
+
+  /* ----------------------------------------
+     Cursor-follow glow on cards
+  ---------------------------------------- */
+  const glowCards = document.querySelectorAll(
+    '.skills-category, .service-card, .cert-card, .project-card, .contact-item'
+  );
+
+  glowCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mx', `${x}%`);
+      card.style.setProperty('--my', `${y}%`);
+    });
+  });
 
   /* ----------------------------------------
      Scroll-reveal animations
