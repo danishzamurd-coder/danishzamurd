@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — DANISH ZAMURD</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="auth-page">
+
+    <a href="index.html" class="auth-back"><i class="fa-solid fa-arrow-left"></i> Back to home</a>
+
+    <div class="auth-card">
+      <h1>Create your account</h1>
+      <p class="auth-sub">Join as a visitor, or work with us as a freelancer.</p>
+
+      <div class="account-type-toggle">
+        <button type="button" class="account-type-btn active" data-type="visitor">Just Visiting</button>
+        <button type="button" class="account-type-btn" data-type="freelancer">Work With Us</button>
+      </div>
+
+      <p class="auth-error" id="authError"></p>
+
+      <form id="registerForm" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="Danish" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Zamurd" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+92 300 0000000" required>
+        </div>
+
+        <div class="form-group">
+          <label for="regPassword">New Password</label>
+          <input type="password" id="regPassword" placeholder="At least 6 characters" minlength="6" required>
+        </div>
+
+        <div id="freelancerFields" class="freelancer-fields" hidden>
+
+          <div class="form-group">
+            <label for="engagementType">Type of Engagement</label>
+            <select id="engagementType">
+              <option value="hire">I want to hire you for a project</option>
+              <option value="collaborate">I want to collaborate / work with you</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Services Needed</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="checkbox" value="Web Development"> Web Development</label>
+              <label class="checkbox-pill"><input type="checkbox" value="Graphic Design"> Graphic Design</label>
+              <label class="checkbox-pill"><input type="checkbox" value="Video Editing"> Video Editing</label>
+              <label class="checkbox-pill"><input type="checkbox" value="Data Entry"> Data Entry</label>
+              <label class="checkbox-pill"><input type="checkbox" value="Other"> Other</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Estimated Project Budget</label>
+            <select id="budget">
+              <option value="">Select a range (optional)</option>
+              <option value="Under $100">Under $100</option>
+              <option value="$100 - $300">$100 – $300</option>
+              <option value="$300 - $700">$300 – $700</option>
+              <option value="$700+">$700+</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="projectBrief">Brief Description</label>
+            <textarea id="projectBrief" rows="3" placeholder="Tell me a bit about what you need..."></textarea>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Account</button>
+
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+  <script src="firebase-init.js"></script>
+  <script src="auth.js"></script>
+</body>
+
+</html>
