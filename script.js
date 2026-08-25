@@ -3,80 +3,29 @@ document.documentElement.classList.add('js');
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const navbar     = document.getElementById('navbar');
-  const menuToggle = document.getElementById('menuToggle');
-  const menu       = document.getElementById('menu');
-  const navLinks   = document.querySelectorAll('.nav-link');
-  const backToTop  = document.getElementById('backToTop');
+  const backToTop = document.getElementById('backToTop');
   const typedEl    = document.getElementById('typed');
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ----------------------------------------
-     Mobile menu toggle
+     Back-to-top button visibility
   ---------------------------------------- */
-  function closeMenu(){
-    menu.classList.remove('open');
-    menuToggle.classList.remove('active');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('menu-open');
-  }
+  if (backToTop) {
+    function handleScroll(){
+      backToTop.classList.toggle('show', window.scrollY > 400);
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 
-  function toggleMenu(){
-    const isOpen = menu.classList.toggle('open');
-    menuToggle.classList.toggle('active', isOpen);
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-    document.body.classList.toggle('menu-open', isOpen);
-  }
-
-  menuToggle.addEventListener('click', toggleMenu);
-
-  navLinks.forEach(link => link.addEventListener('click', closeMenu));
-
-  // Close the mobile menu when the dark overlay behind it is tapped
-  document.addEventListener('click', (e) => {
-    const isOpen = menu.classList.contains('open');
-    if (!isOpen) return;
-    const clickedInsideMenu = menu.contains(e.target);
-    const clickedToggle = menuToggle.contains(e.target);
-    if (!clickedInsideMenu && !clickedToggle) closeMenu();
-  });
-
-  // Close menu with Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
-
-  /* ----------------------------------------
-     Navbar background on scroll + back-to-top
-  ---------------------------------------- */
-  function handleScroll(){
-    const scrolled = window.scrollY > 60;
-    navbar.classList.toggle('scrolled', scrolled);
-    backToTop.classList.toggle('show', window.scrollY > 400);
-  }
-
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
-
-  /* ----------------------------------------
-     Active nav link on scroll
-  ---------------------------------------- */
-  const sections = document.querySelectorAll('main section, header#home');
-
-  const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      navLinks.forEach(link => link.classList.remove('active'));
-      const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-      if (activeLink) activeLink.classList.add('active');
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-
-  sections.forEach(section => navObserver.observe(section));
+  }
 
   /* ----------------------------------------
-     Typing animation for hero role
+     Typing animation for hero role (homepage only)
   ---------------------------------------- */
   const roles = [
     'Welcome to my website',
