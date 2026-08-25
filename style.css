@@ -1163,10 +1163,14 @@ footer{
 .auth-card h1{
   font-family: var(--font-display);
   font-weight:700;
-  font-size:1.7rem;
-  color:#ffffff;
-  margin-bottom:8px;
+  font-size:1.9rem;
+  letter-spacing:-.01em;
   text-align:center;
+  margin-bottom:10px;
+  background: linear-gradient(135deg, #ffffff 35%, var(--teal));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
 .auth-card .auth-sub{
@@ -1365,4 +1369,242 @@ footer{
 
 .checkbox-pill input{
   accent-color: var(--accent);
+}
+
+/* ==========================================================
+   PAGE TRANSITIONS
+   ========================================================== */
+html.page-transitions body{
+  opacity:0;
+}
+
+html.page-transitions body.page-visible{
+  opacity:1;
+  transition: opacity .22s ease;
+}
+
+html.page-transitions body.page-leaving{
+  opacity:0;
+  transition: opacity .16s ease;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html.page-transitions body,
+  html.page-transitions body.page-visible,
+  html.page-transitions body.page-leaving{
+    opacity:1;
+    transition:none;
+  }
+}
+
+/* ==========================================================
+   PROFILE WIDGET (replaces Login / Work With Us once signed in)
+   ========================================================== */
+.profile-menu-item{
+  position:relative;
+  margin-left:8px;
+}
+
+.profile-trigger{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  padding:6px 14px 6px 6px;
+  cursor:pointer;
+  font-family: var(--font-body);
+  color: var(--text-on-dark);
+  transition: var(--transition);
+}
+
+.profile-trigger:hover{
+  background: rgba(255,255,255,.09);
+  border-color: rgba(255,255,255,.24);
+}
+
+.profile-avatar{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: var(--font-display);
+  font-weight:700;
+  font-size:.8rem;
+  color:#ffffff;
+  background: linear-gradient(135deg, var(--accent), var(--teal));
+  flex-shrink:0;
+}
+
+.profile-avatar.large{
+  width:44px;
+  height:44px;
+  font-size:1rem;
+}
+
+.profile-name{
+  font-size:.9rem;
+  font-weight:600;
+  max-width:110px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.profile-caret{
+  font-size:.7rem;
+  color: var(--text-on-dark-muted);
+  transition: transform var(--transition);
+}
+
+.profile-trigger[aria-expanded="true"] .profile-caret{
+  transform: rotate(180deg);
+}
+
+.profile-panel{
+  position:absolute;
+  top:calc(100% + 12px);
+  right:0;
+  width:280px;
+  background: rgba(9,13,26,.96);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--radius-md);
+  padding:20px;
+  box-shadow: var(--shadow);
+  z-index:1200;
+}
+
+.profile-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-bottom:16px;
+  margin-bottom:14px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.profile-fullname{
+  font-family: var(--font-display);
+  font-weight:600;
+  font-size:.98rem;
+  color:#ffffff;
+  margin-bottom:4px;
+}
+
+.profile-badge{
+  display:inline-block;
+  font-family: var(--font-mono);
+  font-size:.68rem;
+  letter-spacing:.04em;
+  padding:3px 10px;
+  border-radius:999px;
+  color:#ffffff;
+}
+
+.profile-badge.visitor{ background: rgba(20,184,166,.25); color:#5eead4; }
+.profile-badge.freelancer{ background: rgba(255,107,74,.25); color:#ffab94; }
+
+.profile-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:.82rem;
+  padding:7px 0;
+  color: var(--text-on-dark-muted);
+}
+
+.profile-row strong{
+  color: var(--text-on-dark);
+  font-weight:500;
+  text-align:right;
+}
+
+.profile-brief{
+  font-size:.8rem;
+  font-style:italic;
+  color: var(--text-on-dark-muted);
+  background: rgba(255,255,255,.04);
+  border-radius: var(--radius-sm);
+  padding:10px 12px;
+  margin-top:8px;
+  line-height:1.5;
+}
+
+.profile-logout{
+  width:100%;
+  justify-content:center;
+  margin-top:16px;
+  border-color: rgba(255,255,255,.18);
+  cursor:pointer;
+  font-size:.88rem;
+  padding:11px 20px;
+}
+
+@media (max-width:860px){
+  .profile-menu-item{
+    width:100%;
+    margin-left:0;
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .profile-trigger{
+    width:100%;
+    justify-content:center;
+  }
+
+  .profile-panel{
+    position:static;
+    width:100%;
+    margin-top:10px;
+    box-shadow:none;
+  }
+
+  .profile-name{ max-width:none; }
+}
+
+/* ==========================================================
+   INNER PAGES (about / skills / services / certificates /
+   projects / contact) — space for the fixed navbar since
+   these pages no longer have a tall hero pushing content down
+   ========================================================== */
+.page-main{
+  padding-top:88px;
+  min-height:60vh;
+}
+
+@media (max-width:640px){
+  .page-main{ padding-top:76px; }
+}
+
+/* ---------- Login page intro message (explains why auth is required) ---------- */
+.auth-intro{
+  position:relative;
+  text-align:center;
+  font-family: var(--font-body);
+  font-size:.86rem;
+  font-weight:400;
+  line-height:1.65;
+  color: var(--text-on-dark-muted);
+  background: linear-gradient(135deg, rgba(255,107,74,.08), rgba(20,184,166,.08));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius-sm);
+  padding:16px 18px 14px;
+  margin-bottom:26px;
+}
+
+.auth-intro::before{
+  content:'';
+  display:block;
+  width:34px;
+  height:3px;
+  border-radius:2px;
+  margin:0 auto 10px;
+  background: linear-gradient(90deg, var(--accent), var(--teal));
 }
