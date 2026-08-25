@@ -1,10 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  const registerForm = document.getElementById('registerForm');
+  const loginForm     = document.getElementById('loginForm');
+
+  // If someone is already signed in and lands on login/register, send them
+  // straight into the site instead of showing the auth forms again.
+  auth.onAuthStateChanged((user) => {
+    if (user && (registerForm || loginForm)) {
+      window.location.href = 'index.html';
+    }
+  });
+
   /* ----------------------------------------
      REGISTER PAGE
   ---------------------------------------- */
-  const registerForm = document.getElementById('registerForm');
-
   if (registerForm) {
     const typeButtons = document.querySelectorAll('.account-type-btn');
     const freelancerFields = document.getElementById('freelancerFields');
@@ -78,8 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ----------------------------------------
      LOGIN PAGE
   ---------------------------------------- */
-  const loginForm = document.getElementById('loginForm');
-
   if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
