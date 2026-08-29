@@ -18,90 +18,102 @@
   <div class="auth-page">
 
     <div class="auth-card">
+      <p class="auth-brand">Danish Zamurd</p>
       <p class="auth-intro">Welcome to the Danish Zamurd Portfolio. Please create an account to explore my portfolio.</p>
       <h1>Create your account</h1>
       <p class="auth-sub">Join as a visitor, or work with us as a freelancer.</p>
 
-      <div class="account-type-toggle">
-        <button type="button" class="account-type-btn active" data-type="visitor">Just Visiting</button>
-        <button type="button" class="account-type-btn" data-type="freelancer">Work With Us</button>
-      </div>
+      <div id="registerFormWrap">
 
-      <p class="auth-error" id="authError"></p>
-
-      <form id="registerForm" novalidate>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" placeholder="Danish" required>
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" placeholder="Zamurd" required>
-          </div>
+        <div class="account-type-toggle">
+          <button type="button" class="account-type-btn active" data-type="visitor">Just Visiting</button>
+          <button type="button" class="account-type-btn" data-type="freelancer">Work With Us</button>
         </div>
 
-        <div class="form-group">
-          <label for="regEmail">Email</label>
-          <input type="email" id="regEmail" placeholder="you@example.com" required>
-        </div>
+        <p class="auth-error" id="authError"></p>
 
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" placeholder="+92 300 0000000" required>
-        </div>
+        <form id="registerForm" novalidate>
 
-        <div class="form-group">
-          <label for="regPassword">New Password</label>
-          <input type="password" id="regPassword" placeholder="At least 6 characters" minlength="6" required>
-        </div>
-
-        <div id="freelancerFields" class="freelancer-fields" hidden>
-
-          <div class="form-group">
-            <label for="engagementType">Type of Engagement</label>
-            <select id="engagementType">
-              <option value="hire">I want to hire you for a project</option>
-              <option value="collaborate">I want to collaborate / work with you</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Services Needed</label>
-            <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="checkbox" value="Web Development"> Web Development</label>
-              <label class="checkbox-pill"><input type="checkbox" value="Graphic Design"> Graphic Design</label>
-              <label class="checkbox-pill"><input type="checkbox" value="Video Editing"> Video Editing</label>
-              <label class="checkbox-pill"><input type="checkbox" value="Data Entry"> Data Entry</label>
-              <label class="checkbox-pill"><input type="checkbox" value="Other"> Other</label>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" placeholder="Danish" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" placeholder="Zamurd" required>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="budget">Estimated Project Budget</label>
-            <select id="budget">
-              <option value="">Select a range (optional)</option>
-              <option value="Under $100">Under $100</option>
-              <option value="$100 - $300">$100 – $300</option>
-              <option value="$300 - $700">$300 – $700</option>
-              <option value="$700+">$700+</option>
-              <option value="Not sure yet">Not sure yet</option>
-            </select>
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" placeholder="you@example.com" required>
           </div>
 
           <div class="form-group">
-            <label for="projectBrief">Brief Description</label>
-            <textarea id="projectBrief" rows="3" placeholder="Tell me a bit about what you need..."></textarea>
+            <label for="phone" id="phoneLabel">Phone Number (Optional)</label>
+            <input type="tel" id="phone" placeholder="+92 300 0000000">
           </div>
 
-        </div>
+          <div class="form-group">
+            <label for="regPassword">New Password</label>
+            <input type="password" id="regPassword" placeholder="At least 6 characters" minlength="6" required>
+          </div>
 
-        <button type="submit" class="btn btn-primary">Create Account</button>
+          <div id="freelancerFields" class="freelancer-fields" hidden>
 
-      </form>
+            <div class="form-group">
+              <label for="engagementType">Type of Engagement</label>
+              <select id="engagementType">
+                <option value="hire">I want to hire you for a project</option>
+                <option value="collaborate">I want to collaborate / work with you</option>
+              </select>
+            </div>
 
-      <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+            <div class="form-group">
+              <label>Services Needed</label>
+              <div class="checkbox-grid">
+                <label class="checkbox-pill"><input type="checkbox" value="Web Development"> Web Development</label>
+                <label class="checkbox-pill"><input type="checkbox" value="Graphic Design"> Graphic Design</label>
+                <label class="checkbox-pill"><input type="checkbox" value="Video Editing"> Video Editing</label>
+                <label class="checkbox-pill"><input type="checkbox" value="Data Entry"> Data Entry</label>
+                <label class="checkbox-pill"><input type="checkbox" value="Other"> Other</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="budget">Estimated Project Budget</label>
+              <select id="budget">
+                <option value="">Select a range (optional)</option>
+                <option value="Under $100">Under $100</option>
+                <option value="$100 - $300">$100 – $300</option>
+                <option value="$300 - $700">$300 – $700</option>
+                <option value="$700+">$700+</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="projectBrief">Brief Description</label>
+              <textarea id="projectBrief" rows="3" placeholder="Tell me a bit about what you need..."></textarea>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn btn-primary">Create Account</button>
+
+        </form>
+
+        <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+
+      </div>
+
+      <div id="verifyNotice" class="auth-notice" hidden>
+        <i class="fa-solid fa-envelope-circle-check auth-notice-icon"></i>
+        <h2>Account created</h2>
+        <p>We've sent a verification link to your email. Feel free to verify it whenever convenient — you can continue exploring the portfolio right away.</p>
+        <a href="index.html" class="btn btn-primary">Continue to Portfolio</a>
+      </div>
     </div>
 
   </div>
