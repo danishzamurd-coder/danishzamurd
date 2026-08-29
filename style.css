@@ -1160,17 +1160,47 @@ footer{
   box-shadow: var(--shadow);
 }
 
+@keyframes authRise{
+  from{ opacity:0; transform: translateY(16px); }
+  to{ opacity:1; transform:none; }
+}
+
+.auth-card > *{
+  animation: authRise .7s cubic-bezier(.4,0,.2,1) both;
+}
+.auth-card > *:nth-child(1){ animation-delay:.05s; }
+.auth-card > *:nth-child(2){ animation-delay:.15s; }
+.auth-card > *:nth-child(3){ animation-delay:.25s; }
+.auth-card > *:nth-child(4){ animation-delay:.35s; }
+.auth-card > *:nth-child(5){ animation-delay:.45s; }
+.auth-card > *:nth-child(6){ animation-delay:.55s; }
+
+.auth-brand{
+  text-align:center;
+  font-family: var(--font-display);
+  font-weight:700;
+  font-size:clamp(1.5rem, 5vw, 1.9rem);
+  letter-spacing:-.01em;
+  margin-bottom:16px;
+  background: linear-gradient(135deg, #ffffff 15%, var(--accent) 55%, var(--teal));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow: 0 0 36px rgba(255,107,74,.28);
+}
+
 .auth-card h1{
   font-family: var(--font-display);
   font-weight:700;
-  font-size:1.9rem;
-  letter-spacing:-.01em;
+  font-size:1.95rem;
+  letter-spacing:-.015em;
   text-align:center;
   margin-bottom:10px;
   background: linear-gradient(135deg, #ffffff 35%, var(--teal));
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
+  text-shadow: 0 0 24px rgba(20,184,166,.18);
 }
 
 .auth-card .auth-sub{
@@ -1607,4 +1637,59 @@ html.page-transitions body.page-leaving{
   border-radius:2px;
   margin:0 auto 10px;
   background: linear-gradient(90deg, var(--accent), var(--teal));
+}
+
+/* ---------- Email verification notices (register success / login blocked) ---------- */
+.auth-notice{
+  text-align:center;
+  padding:8px 4px 4px;
+}
+
+.auth-notice-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  font-size:1.4rem;
+  color:#ffffff;
+  background: linear-gradient(135deg, var(--accent), var(--teal));
+  margin-bottom:18px;
+}
+
+.auth-notice h2{
+  font-family: var(--font-display);
+  font-weight:700;
+  font-size:1.3rem;
+  color:#ffffff;
+  margin-bottom:10px;
+}
+
+.auth-notice > p{
+  color: var(--text-on-dark-muted);
+  font-size:.9rem;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+.auth-resend-status{
+  min-height:18px;
+  font-size:.8rem;
+  color: var(--teal);
+  margin-bottom:14px !important;
+}
+
+.auth-notice .btn{
+  width:100%;
+  justify-content:center;
+  margin-bottom:12px;
+  cursor:pointer;
+  border:none;
+}
+
+.auth-notice .btn:last-child{ margin-bottom:0; }
+
+.auth-notice .btn-outline{
+  border:1px solid rgba(255,255,255,.18);
 }
