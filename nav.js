@@ -179,7 +179,8 @@
 
   /* ---------- Auth guard ----------
      Every page that includes nav.js requires a logged-in user.
-     If nobody is signed in, bounce to the login page. */
+     Matching the site's login rule, this checks Email + Password
+     authentication only — it does not require email verification. */
   auth.onAuthStateChanged(async (user) => {
     if (!user) {
       window.location.href = 'login.html';
