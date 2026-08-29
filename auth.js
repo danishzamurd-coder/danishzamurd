@@ -1,12 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const registerForm = document.getElementById('registerForm');
-  const loginForm     = document.getElementById('loginForm');
+  const registerForm     = document.getElementById('registerForm');
+  const loginForm        = document.getElementById('loginForm');
+  const registerFormWrap = document.getElementById('registerFormWrap');
+  const verifyNotice     = document.getElementById('verifyNotice');
 
-  // If someone is already signed in and lands on login/register, send them
-  // straight into the site instead of showing the auth forms again.
+  // Prevents the "already signed in" redirect below from racing ahead
+  // of the registration flow — createUserWithEmailAndPassword signs
+  // the user in immediately, which would otherwise fire the redirect
+  // before the user ever sees the "Account created" message.
+  let suppressAutoRedirect = false;
+
+  function showVerifyNotice() {
+    if (registerFormWrap) registerFormWrap.hidden = true;
+    if (verifyNotice) verifyNotice.hidden = false;
+  }
+
+  /* ----------------------------------------
+     If someone already has a Firebase session
+     and lands on login/register, send them
+     straight into the site. Login access only
+     depends on being signed in — not on email
+     verification.
+  ---------------------------------------- */
   auth.onAuthStateChanged((user) => {
-    if (user && (registerForm || loginForm)) {
+    if (user && (registerForm || loginForm) && !suppressAutoRedirect) {
       window.location.href = 'index.html';
     }
   });
@@ -15,9 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
      REGISTER PAGE
   ---------------------------------------- */
   if (registerForm) {
-    const typeButtons = document.querySelectorAll('.account-type-btn');
+    const typeButtons      = document.querySelectorAll('.account-type-btn');
     const freelancerFields = document.getElementById('freelancerFields');
+    const phoneInput       = document.getElementById('phone');
+    const phoneLabel       = document.getElementById('phoneLabel');
     let accountType = 'visitor'; // default
+
+    function applyPhoneRequirement() {
+      const isFreelancer = accountType === 'freelancer';
+      phoneInput.required = isFreelancer;
+      if (phoneLabel) {
+        phoneLabel.textContent = isFreelancer ? 'Phone Number (Required)' : 'Phone Number (Optional)';
+      }
+    }
+
+    applyPhoneRequirement(); // set the correct initial state on page load
 
     typeButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -25,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add('active');
         accountType = btn.dataset.type;
         freelancerFields.hidden = accountType !== 'freelancer';
+        applyPhoneRequirement();
       });
     });
 
@@ -34,14 +65,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const firstName = document.getElementById('firstName').value.trim();
       const lastName  = document.getElementById('lastName').value.trim();
       const email     = document.getElementById('regEmail').value.trim();
-      const phone     = document.getElementById('phone').value.trim();
+      const phone     = phoneInput.value.trim();
       const password  = document.getElementById('regPassword').value;
       const errorBox  = document.getElementById('authError');
       const submitBtn = registerForm.querySelector('button[type="submit"]');
 
       errorBox.textContent = '';
+
+      // Work With Us requires a phone number; Just Visiting does not.
+      // The HTML `required` attribute already blocks submission for
+      // Work With Us via the browser's native validation, but we
+      // double-check here too so there's no gap either way.
+      if (accountType === 'freelancer' && !phone) {
+        errorBox.textContent = 'Please enter a phone number so we can reach you about your project.';
+        phoneInput.focus();
+        return;
+      }
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Creating account...';
+      suppressAutoRedirect = true;
 
       try {
         const credential = await auth.createUserWithEmailAndPassword(email, password);
@@ -74,18 +117,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         await db.collection('users').doc(credential.user.uid).set(userDoc);
 
-        window.location.href = 'index.html';
+        // Registration triggers Firebase's built-in verification email.
+        // This is informational only — it does NOT block login or
+        // portfolio access. The user is already signed in at this
+        // point, so we let them continue straight through.
+        try {
+          await credential.user.sendEmailVerification();
+        } catch (verifyErr) {
+          console.error('Could not send verification email:', verifyErr);
+        }
+
+        showVerifyNotice();
 
       } catch (err) {
         errorBox.textContent = friendlyError(err);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Create Account';
+        suppressAutoRedirect = false;
       }
     });
   }
 
   /* ----------------------------------------
      LOGIN PAGE
+     Email + Password only. Email verification
+     status has no effect on whether login
+     succeeds or whether the user reaches the
+     portfolio homepage.
   ---------------------------------------- */
   if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
@@ -101,18 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.textContent = 'Logging in...';
 
       try {
-        const credential = await auth.signInWithEmailAndPassword(email, password);
-
-        // Look up the account type so you can branch later
-        // (e.g. send freelancers to a different page than visitors).
-        const doc = await db.collection('users').doc(credential.user.uid).get();
-        const accountType = doc.exists ? doc.data().accountType : 'visitor';
-
-        if (accountType === 'freelancer') {
-          window.location.href = 'index.html'; // swap for a freelancer dashboard later
-        } else {
-          window.location.href = 'index.html'; // swap for a visitor dashboard later
-        }
+        await auth.signInWithEmailAndPassword(email, password);
+        window.location.href = 'index.html';
 
       } catch (err) {
         errorBox.textContent = friendlyError(err);
@@ -134,6 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'auth/wrong-password':
       case 'auth/invalid-credential':
         return 'Incorrect email or password.';
+      case 'auth/too-many-requests':
+        return 'Too many attempts. Please wait a moment and try again.';
       default:
         return err.message || 'Something went wrong. Please try again.';
     }
